@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php echo $this->tag->getTitle(); ?>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <style type="text/css">
+            * {
+                border-radius: 0 !important;
+            }
+        </style>
+    </head>
+    <body>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand" href="/">HeadDB</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-group" aria-hidden="true"></i> Heads</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/view/blocks">Blocks</a>
+                        <a class="dropdown-item" href="/view/food">Food</a>
+                        <a class="dropdown-item" href="/view/electronics">Electronics</a>
+                        <a class="dropdown-item" href="/view/characters">Characters</a>
+                        <a class="dropdown-item" href="/view/flags">Flags</a>
+                        <a class="dropdown-item" href="/view/letters">Letters</a>
+                        <a class="dropdown-item" href="/view/youtubers">Youtubers</a>
+                        <a class="dropdown-item" href="/view/halloween">Halloween</a>
+                        <a class="dropdown-item" href="/view/christmas">Christmas</a>
+                        <a class="dropdown-item" href="/view/all">All Heads</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api"><i class="fa fa-plug" aria-hidden="true"></i> API</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron" style="background: linear-gradient(rgba(41, 43, 44, 0.8), rgba(41, 43, 44, 0.8)), url(/img/header.png);background-repeat: repeat;background-position: center top;color:white;border-radius:0;">
+    <div class="container">
+        <h1 class="display-3">Minecraft Head Database</h1>
+        <p class="lead">Many heads to spice up your builds in Minecraft.</p>
+    </div>
+</div>
+        <div class="container">
+            <div class="row">
+                <?php echo $this->getContent(); ?>
+            </div>
+        </div>
+<nav class="navbar navbar-light bg-faded">
+    <div class="container">
+        <span class="navbar-text" style="width:100%;">
+            <span>HeadDB is not affiliated with Mojang. </span><span class="pull-right">Website maintained &amp; made by <a href="https://twitter.com/itsyive">Yive</a>.</span>
+        </span>
+    </div>
+</nav>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+        <script type="text/javascript">
+            var clipboard = new Clipboard('.btn');
+            clipboard.on('success', function(e) {
+                console.log(e);
+            });
+            clipboard.on('error', function(e) {
+                console.log(e);
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-52657458-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
