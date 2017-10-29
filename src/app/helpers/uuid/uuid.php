@@ -1,10 +1,9 @@
 <?
+    // Credit to https://gist.github.com/games647/2b6a00a8fc21fd3b88375f03c9e2e603
+    // Edited to work with HeadDB though.
     function constructOfflinePlayerUuid($username) {
-        //extracted from the java code:
-        //new GameProfile(UUID.nameUUIDFromBytes(("OfflinePlayer:" + name).getBytes(Charsets.UTF_8)), name));
-        $data = hex2bin(md5("HeadDB:".rand().":" . $username));
+        $data = random_bytes(16);
         $data[6] = chr(ord($data[6]) & 0x0f | 0x30);
-        //IETF variant
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
         $striped = bin2hex($data);
         $components = array(
