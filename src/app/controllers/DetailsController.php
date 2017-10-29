@@ -2,18 +2,14 @@
 
 class DetailsController extends \Phalcon\Mvc\Controller {
 
-    public function initialize() {
-        $this->tag->setTitle("HeadDB");
-    }
-
     public function indexAction() {
         $params = $this->dispatcher->getParams();
         if(empty($params['uuid'])) {
             return $this->response->redirect("https://headdb.com/", true);
         } else {
             $redis = new Redis();
-            $redis->pconnect('/var/run/redis/redis.sock');
-            $keys = $redis->keys('headmc:*');
+            $redis->pconnect($this->config->application->redis->host);
+            $keys = $redis->keys($this->config->application->redis->keys->all);
             if(empty($keys)) {
                 return $this->response->redirect("https://headdb.com/", true);
             } else {

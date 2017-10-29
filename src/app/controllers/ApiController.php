@@ -3,7 +3,6 @@
 class ApiController extends \Phalcon\Mvc\Controller {
 
     public function indexAction() {
-        $this->tag->setTitle("HeadDB");
         $this->tag->prependTitle("API Documentation - ");
 
     }
@@ -18,8 +17,8 @@ class ApiController extends \Phalcon\Mvc\Controller {
             return json_encode(array('error' => "Invalid UUID."), JSON_PRETTY_PRINT);
         } else {
             $redis = new Redis();
-            $redis->pconnect('/var/run/redis/redis.sock');
-            $keys = $redis->keys('headmc:*');
+            $redis->pconnect($this->config->application->redis->host);
+            $keys = $redis->keys($this->config->application->redis->keys->all);
             $output = array();
             foreach ($keys as $key) {
                 if(strpos($key, $params['uuid'])) {
@@ -48,11 +47,11 @@ class ApiController extends \Phalcon\Mvc\Controller {
                 return json_encode(array('error' => "Invalid category."), JSON_PRETTY_PRINT);
             } else {
                 $redis = new Redis();
-                $redis->pconnect('/var/run/redis/redis.sock');
+                $redis->pconnect($this->config->application->redis->host);
                 if(strtolower($params['category']) == 'all') {
-                    $keys = $redis->keys('headmc:*');
+                    $keys = $redis->keys($this->config->application->redis->keys->all);
                 } elseif(strtolower($params['category']) == 'blocks') {
-                    $keys = $redis->keys('headmc:block:*');
+                    $keys = $redis->keys($this->config->application->redis->keys->blocks);
                 } else {
                     $keys = $redis->keys('headmc:'.strtolower($params['category']).':*');
                 }

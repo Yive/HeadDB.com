@@ -76,3 +76,4 @@ $RECYCLE.BIN/
 
 # HeadDB.com
 src/app/config/config.php
+src/app/config/routes/private.php

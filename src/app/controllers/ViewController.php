@@ -2,10 +2,6 @@
 
 class ViewController extends \Phalcon\Mvc\Controller {
 
-    public function initialize() {
-        $this->tag->setTitle("HeadDB");
-    }
-
     public function indexAction() {
         return $this->response->redirect("https://headdb.com/", true);
     }
@@ -13,8 +9,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function allAction() {
         $this->tag->prependTitle("View All - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->all);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -43,8 +39,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function foodAction() {
         $this->tag->prependTitle("View Food - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:food:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->food);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -73,8 +69,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function blocksAction() {
         $this->tag->prependTitle("View Blocks - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:block:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->blocks);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -103,8 +99,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function electronicsAction() {
         $this->tag->prependTitle("View Electronics - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:electronics:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->electronics);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -133,8 +129,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function charactersAction() {
         $this->tag->prependTitle("View Characters - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:characters:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->characters);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -163,8 +159,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function flagsAction() {
         $this->tag->prependTitle("View Flags - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:flags:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->flags);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -193,8 +189,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function lettersAction() {
         $this->tag->prependTitle("View Letters - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:letters:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->letters);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -223,8 +219,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function miscAction() {
         $this->tag->prependTitle("View Misc - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:misc:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->misc);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -253,8 +249,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function youtubersAction() {
         $this->tag->prependTitle("View Youtubers - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:youtubers:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->youtubers);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -283,8 +279,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function halloweenAction() {
         $this->tag->prependTitle("View Halloween - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:halloween:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->halloween);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);
@@ -313,8 +309,8 @@ class ViewController extends \Phalcon\Mvc\Controller {
     public function christmasAction() {
         $this->tag->prependTitle("View Christmas - ");
         $redis = new Redis();
-        $redis->pconnect('/var/run/redis/redis.sock');
-        $json = $redis->keys('headmc:christmas:*');
+        $redis->pconnect($this->config->application->redis->host);
+        $json = $redis->keys($this->config->application->redis->keys->christmas);
         foreach ($json as $key) {
             $head = json_decode($redis->get($key),true);
             $decodedValue = json_decode(base64_decode($head['value']),true);

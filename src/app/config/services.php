@@ -115,11 +115,27 @@ $di->setShared('session', function () {
 /**
  * Add routing capabilities
  */
-$di->set(
-    'router',
-    function () {
-        require __DIR__.'/routes.php';
+$di->set('router', function () {
+    $router = new Router(false);
 
-        return $router;
+    $router->add('/', [
+        'controller'    => 'index',
+        'action'        => 'index',
+    ]);
+
+    $APIs = new RouterGroup();
+    $Private = new RouterGroup();
+    $Overview = new RouterGroup();
+
+    $routes = glob(__DIR__.'/routes/*/*.php');
+    foreach ($routes as $routesKey => $routesValue) {
+        require $routesValue;
     }
-);
+
+    $router->mount($APIs);
+    $router->mount($Private);
+    $router->mount($Overview);
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
+
+    return $router;
+});
