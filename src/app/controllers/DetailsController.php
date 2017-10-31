@@ -1,6 +1,6 @@
 <?php
 
-class DetailsController extends \Phalcon\Mvc\Controller {
+class DetailsController extends ControllerBase {
 
     public function indexAction() {
         $params = $this->dispatcher->getParams();
@@ -9,7 +9,7 @@ class DetailsController extends \Phalcon\Mvc\Controller {
         } else {
             $redis = new Redis();
             $redis->pconnect($this->config->application->redis->host);
-            $keys = $redis->keys($this->config->application->redis->keys->all);
+            $keys = $redis->keys($this->config->application->redis->keys->all.'*');
             if(empty($keys)) {
                 return $this->response->redirect("https://headdb.com/", true);
             } else {

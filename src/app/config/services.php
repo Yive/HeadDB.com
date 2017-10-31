@@ -7,6 +7,8 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
+use Phalcon\Mvc\Router;
+use Phalcon\Mvc\Router\Group as RouterGroup;
 
 /**
  * Shared configuration service
@@ -127,7 +129,7 @@ $di->set('router', function () {
     $Private = new RouterGroup();
     $Overview = new RouterGroup();
 
-    $routes = glob(__DIR__.'/routes/*/*.php');
+    $routes = glob(__DIR__.'/routes/*.php');
     foreach ($routes as $routesKey => $routesValue) {
         require $routesValue;
     }

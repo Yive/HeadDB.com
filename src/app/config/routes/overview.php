@@ -8,4 +8,9 @@
         'controller' => 'details',
         'action' => 'index'
     ]);
+
+    $Overview->add('/submit', [
+        'controller' => 'import',
+        'action' => 'index'
+    ]);
 ?>

@@ -1,0 +1,34 @@
+<div class="col" style="margin-bottom:20px;">
+    <div class="card">
+        <div class="card-header">Submit Custom Player Head</div>
+        <div class="card-block">
+            <div class="col-sm-12">
+                <?php echo $this->getContent(); ?>
+            </div>
+            <form class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label for="playerName" class="col-sm-2 control-label">Minecraft Username</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Notch">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="skullName" class="col-sm-2 control-label">Skull Name</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="skullName" name="skullName" placeholder="Bald Man">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+            <div class="col-sm-12">
+                <div class="alert alert-warning"><strong>Warning:</strong> Skull names which aren't allowed will be deleted. This includes words connected to racism &amp; nazism. Advertising will also be deleted.</div>
+                <div class="alert alert-warning"><strong>Warning:</strong> This will grab the current skin file connect to this username &amp; use that for a custom player head.</div>
+                <div class="alert alert-danger"><strong>Notice:</strong> Custom player heads will only work above 1.8.4. Though it might be possible for them to work in 1.7.2 &amp; above.</div>
+            </div>
+        </div>
+    </div>
+</div>
