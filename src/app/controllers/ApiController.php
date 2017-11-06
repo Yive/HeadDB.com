@@ -57,7 +57,7 @@ class ApiController extends ControllerBase {
                 }
                 $output = array();
                 foreach ($keys as $key) {
-                    if(strpos($key, 'unverified')) {
+                    if(strpos($key, 'unverified') && $params['category'] == 'all') {
                         continue;
                     }
                     $head = json_decode($redis->get($key),true);
